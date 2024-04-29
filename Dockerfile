@@ -23,7 +23,7 @@ RUN useradd -m steam && cd /home/steam && \
                    steamcmd && \
     ln -s /usr/games/steamcmd /usr/bin/steamcmd
 #RUN apt install -y mono-complete
-RUN apt install -y wine \
+RUN apt install -y --install-recommends wine \
                    winbind
 RUN apt install -y xserver-xorg \
                    xvfb
@@ -32,6 +32,7 @@ RUN rm -rf /var/lib/apt/lists/* && \
     apt clean && \
     apt autoremove -y
 
+ENV WINEDEBUG=warn+all
 COPY start.sh /start.sh
 RUN chmod +x /start.sh
 CMD ["/start.sh"]
