@@ -27,6 +27,7 @@ RUN apt install -y wine \
                    winbind
 RUN apt install -y xserver-xorg \
                    xvfb
+RUN apt install -y jq
 RUN rm -rf /var/lib/apt/lists/* && \
     apt clean && \
     apt autoremove -y
